@@ -1,0 +1,5 @@
+node_modules
+src/be/node_modules
+src/be/dist
+src/fe/node_modules
+src/fe/.next

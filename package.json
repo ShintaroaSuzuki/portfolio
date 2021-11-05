@@ -1,0 +1,14 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ShintaroaSuzuki <shinbo.dorapion19971221@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+      "src/*"
+    ],
+  "engines": {
+    "node": "14"
+  }
+}
