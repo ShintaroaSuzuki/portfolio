@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './users/entities/user.entity';
+import { PostsModule } from './posts/posts.module';
+import { Post } from './posts/entities/post.entity';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -22,10 +25,12 @@ dotenv.config();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      autoLoadEntities: true,
+      entities: [User, Post],
+      autoLoadEntities: false,
       synchronize: true,
     }),
     UsersModule,
+    PostsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
