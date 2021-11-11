@@ -1,0 +1,9 @@
+mutation addPost($post: CreatePostInput!) {
+    createPost(createPostInput: $post) {
+      postId
+      title
+      body
+      created
+      updated
+    }
+  }

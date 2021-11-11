@@ -51,6 +51,7 @@ export class PostsService {
       title: '',
       body: '',
       created: new Date(),
+      updated: new Date(),
     };
   }
 }

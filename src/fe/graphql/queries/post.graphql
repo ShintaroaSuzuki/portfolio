@@ -1,0 +1,9 @@
+query posts($postId: String!) {
+    posts(postId: $postId) {
+        postId
+        title
+        body
+        created
+        updated
+      }
+  }
