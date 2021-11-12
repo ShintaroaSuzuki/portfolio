@@ -1,14 +1,11 @@
 overwrite: true
 schema: "../be/schema.gql"
-documents: 
-  - ./graphql/queries/*.graphql
-  - ./graphql/mutations/*.graphql
+documents: "graphql/**/*.graphql"
 generates:
-  graphql/generated.ts:
+  generated/generated.ts:
     plugins:
-      - "typescript"
-      - "typescript-react-apollo"
       - "typescript-operations"
+      - "typescript-react-apollo"
   ./graphql.schema.json:
     plugins:
       - "introspection"
