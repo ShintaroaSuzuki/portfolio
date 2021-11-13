@@ -3,8 +3,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { getPlaiceholder } from 'plaiceholder'
+import * as THREE from 'three'
+import { Canvas } from '@react-three/fiber'
+import { ScrollControls, Scroll, useScroll } from '@react-three/drei'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const urls = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 5, 7, 8, 2, 4, 9, 6].map((u) => `/${u}.jpg`)
 
   const images = await Promise.all(
@@ -13,7 +16,6 @@ export const getStaticProps = async () => {
 
       return {
         ...img,
-        alt: "image",
         width: "100",
         height: "400",
         unoptimized: true,
@@ -55,13 +57,6 @@ const Home: NextPage = (props) => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
         <Items { ...props } />
       </main>
     </div>
