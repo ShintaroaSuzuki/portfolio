@@ -8,12 +8,10 @@ export type AddPostMutationVariables = Exact<{
 
 export type AddPostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'Post', postId: string, title: string, body: string, created: any, updated: any } };
 
-export type PostsQueryVariables = Exact<{
-  postId: Scalars['String'];
-}>;
+export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: { __typename?: 'Post', postId: string, title: string, body: string, created: any, updated: any } };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', postId: string, title: string, body: string, created: any, updated: any }> };
 
 
 export const AddPostDocument = gql`
@@ -54,8 +52,8 @@ export type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>;
 export type AddPostMutationResult = Apollo.MutationResult<AddPostMutation>;
 export type AddPostMutationOptions = Apollo.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
 export const PostsDocument = gql`
-    query posts($postId: String!) {
-  posts(postId: $postId) {
+    query posts {
+  posts {
     postId
     title
     body
@@ -77,11 +75,10 @@ export const PostsDocument = gql`
  * @example
  * const { data, loading, error } = usePostsQuery({
  *   variables: {
- *      postId: // value for 'postId'
  *   },
  * });
  */
-export function usePostsQuery(baseOptions: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
+export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
       }

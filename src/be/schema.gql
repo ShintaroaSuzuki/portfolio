@@ -47,7 +47,8 @@ scalar DateTime
 type Query {
   users: [User!]!
   user(userId: String!): User!
-  posts(postId: String!): Post!
+  posts: [Post!]!
+  post(postId: String!): Post!
 }
 
 type Mutation {

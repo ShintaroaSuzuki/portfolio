@@ -1,0 +1,14 @@
+input PostInput {
+  title: String!
+  body: String!
+}
+
+mutation addPost($input: PostInput!) {
+    createPost(input: $input) {
+      postId
+      title
+      body
+      created
+      updated
+    }
+  }

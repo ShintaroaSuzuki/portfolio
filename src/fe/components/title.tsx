@@ -7,7 +7,7 @@ import {
   HTMLChakraProps,
 } from "@chakra-ui/system"
 import { cx } from "@chakra-ui/utils"
-import * as React from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 interface InputOptions {
   /**
@@ -65,9 +65,9 @@ export const Input = forwardRef<InputProps, "input">((props, ref) => {
   )
 })
 
-const Title = ({ title, onChangeText }: { title: string, onChangeText: React.ChangeEventHandler<HTMLInputElement> }) => {
+const Title = ({ value, setValue }: { value: string, setValue: Dispatch<SetStateAction<string>> }) => {
     return (
-      <Input placeholder="Title..." value={title} onChange={onChangeText()}/>
+      <Input placeholder="Title..." value={value} onChange={(e) => setValue(e.target.value)}/>
     )
 }
 

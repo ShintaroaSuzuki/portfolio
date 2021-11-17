@@ -1,5 +1,5 @@
-query posts($postId: String!) {
-    posts(postId: $postId) {
+query posts {
+    posts {
         postId
         title
         body
