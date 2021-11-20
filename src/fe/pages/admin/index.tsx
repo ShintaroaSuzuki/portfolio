@@ -9,8 +9,8 @@ import { Descendant } from 'slate'
 import { gql, useMutation } from '@apollo/client'
 
 const ADD_POST = gql`
-  mutation createPost($title: String!, $body: String!) {
-    createPost(createPostInput: {title: $title, body: $body}) {
+  mutation createPost($post: CreatePostInput!) {
+    createPost(createPostInput: $post) {
       title
       body
     }
@@ -34,7 +34,7 @@ const Admin: NextPage = (props) => {
     <Box maxW="960px" mx="auto">
       <Title value ={title} setValue={setTitle} />
       <RichTextEditor value={body} setValue={setBody} />
-      <Button leftIcon={<LeftIcon />} colorScheme="teal" variant="solid" onClick={() => createPost({ variables: { title: 'test', body: 'test' }})}>Create</Button>
+      <Button leftIcon={<LeftIcon />} colorScheme="teal" variant="solid" onClick={() => createPost({ variables: { post: {title: title, body: JSON.stringify(body) }}})}>Create</Button>
     </Box>
   )
 }

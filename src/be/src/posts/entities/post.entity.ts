@@ -7,6 +7,30 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+@ObjectType()
+export class CustomText {
+  @Field(() => String)
+  text: string;
+
+  @Field(() => Boolean, { nullable: true })
+  bold?: boolean;
+
+  @Field(() => Boolean, { nullable: true })
+  code?: boolean;
+
+  @Field(() => Boolean, { nullable: true })
+  italic?: boolean;
+}
+
+@ObjectType()
+export class CustomElement {
+  @Field(() => String, { nullable: true })
+  type?: 'paragraph' | 'block-quote';
+
+  @Field(() => [CustomText], { nullable: true })
+  children?: CustomText[];
+}
+
 @Entity()
 @ObjectType()
 export class Post {

@@ -22,6 +22,13 @@ type User {
   role: String!
 }
 
+type CustomText {
+  text: String!
+  bold: Boolean
+  code: Boolean
+  italic: Boolean
+}
+
 type Post {
   """id of the post"""
   postId: String!

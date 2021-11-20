@@ -49,7 +49,7 @@ export class PostsService {
     return {
       postId: postId,
       title: '',
-      body: '',
+      body: null,
       created: new Date(),
       updated: new Date(),
     };
