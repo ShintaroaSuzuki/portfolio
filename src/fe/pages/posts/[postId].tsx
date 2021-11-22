@@ -6,12 +6,21 @@ import { Box } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { Descendant } from 'slate'
 
-const Post = () => {
+export const getServerSideProps = () => {
   const router = useRouter()
   const { postId } = router.query
 
-  const { loading, data } = usePostQuery({ variables: { postId } })
+  const { loading, data } = usePostQuery({ variables: { postId }})
 
+  return {
+    props: {
+      loading,
+      data,
+    }
+  }
+}
+
+const Post = () => {
   const [title, setTitle] = useState<string>(undefined)
   const [body, setBody] = useState<Descendant[]>([{type: 'paragraph', children: [{ text: 'loading ...' }]}])
 
